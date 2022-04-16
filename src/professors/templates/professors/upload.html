@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+	<title>Square</title>
+	<meta name="viewport" content="width=device-width, iniciale-scale=1">
+	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/professors/navfooter.css' %}">
+    <link rel="stylesheet" href="{% static 'css/professors/upload.css' %}">
+
+
+</head>
+<body>
+	
+	<div class="navbar">
+		<p class="logo"><a href="index.html">SQUARE</a></p>
+		<ul class="list">
+			<li><a href="index.html">Accueil</a></li>
+			<li><a href="">Contact</a></li>
+			<li><a href="">A propos de</a></li>
+		</ul>
+		<p class="signup"><a href="{% url 'logout' %}">déconnexion</a></p>
+		{{ user.username }}
+
+	</div>
+	<div class="line"></div>
+	
+	<div class="all">
+		<div class="planning">
+			<h1>Cours</h1>
+			<p>Ajouter les plannings du semestre en cours et des exams</p>	
+			<div class="morec">More</div>
+		</div>
+		<div class="lineV"></div>
+		<div class="modules">
+			<h1>TD</h1>
+			<p>Ajouter un étudiant qui qui appartient à cette setion</p>
+			<div class="moretd">More</div>
+
+		</div>
+		<div class="lineV"></div>
+		<div class="prof">
+			<h1>TP</h1>
+			<p>Ajoutez un professeur qui est prêt à enseigner cette section</p>
+			<div class="moretp">More</div>
+
+		</div>
+	</div>
+	
+	<div class="parent">
+	<div class="cours" id="cours">
+		<label>Ajoutez Les cours: <p>(must be a PDF file)</p></label>
+		<input type="file" name="cours" accept="application/pdf"/>
+	</div>
+	<div class="td" id="td">
+		<label>Ajoutez Les td: <p>(must be a PDF file)</p></label>
+		<input type="file" name="td" accept="application/pdf"/>
+	</div>
+	<div class="tp" id="tp">
+		<label>Ajoutez Les tp: <p>(must be a PDF file)</p></label>
+		<input type="file" name="tp" accept="application/pdf"/>
+	</div></div>
+	
+
+</body>
+
+<footer>
+	<div class="line"></div>
+	<div class="footer">
+		<ul class="phone">Phone:
+			<li>+213-999-999-999</li>
+		</ul>
+		<ul class="email">Email:
+			<li>admin@univ-khenchela.dz</li>
+		</ul>
+		<ul class="smedia">Social media:
+			<li><a href="fb.com"><img src="{% static 'css/professors/image/fb.png' %}" alt="facebook" style="width:50px;"></a><a href="twitter.com"><img src="{% static 'css/professors/image/twt.png' %}" alt="twitter" style="width:25px;"></a></li>
+		</ul>
+	</div>
+</footer>
+
+
+</html>

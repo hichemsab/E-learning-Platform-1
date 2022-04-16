@@ -1,0 +1,48 @@
+*{
+	box-sizing: borderbox;
+	margin: 0;
+	padding: 0;
+
+}
+
+.heading{
+	padding: 120px 0;
+}
+
+.heading h1{
+	color: #333F63;
+	text-align: center;
+	font-family: 'Bodoni Moda', serif;
+	font-size: 55px;
+	font-weight: 900;
+}
+
+.heading h3{
+	color:#333F63;
+	text-align: center;
+	font-family: 'Manrope', sans-serif;
+	font-size: 28px;
+	font-weight: 400;
+
+}
+
+.heading .choice{
+	display: flex; 
+	align-items: center;
+	justify-content: space-between;
+	padding: 100px 300px 0px;
+}
+
+.heading h2{
+	background-color:#333F63;
+	padding: 30px 60px;
+	border-radius: 20px;
+}
+
+.heading h2 a{
+	text-decoration: none;
+	font-family: 'Manrope', sans-serif;
+	font-size: 28px;
+	font-weight: 300;
+	color: #FFF;
+}

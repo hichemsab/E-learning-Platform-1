@@ -1,0 +1,32 @@
+.corp{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 0px 120px;
+	color: #333F63;
+}
+
+.corp h1{
+	font-family: 'Bodoni Moda', serif;
+	font-size: 45px;
+	font-weight: 900;
+}
+
+.corp h6{
+	font-family: 'Manrope', sans-serif;
+	font-size: 16px;
+}
+.corp p{
+	padding: 0 150px;
+	font-family: 'Manrope', sans-serif;
+	
+}
+ .corp p a{
+	 font-size: 18px;
+	 padding: 11px 40px;
+	 border: 1px solid #333F63;
+	 background-color: #333F63;
+	 color: #D7D4DD;
+	 border-radius: 24px;
+ }
+ 

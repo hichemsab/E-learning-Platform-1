@@ -1,3 +1,4 @@
+import email
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
@@ -8,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 
 def upload(request):
     if not request.user.is_authenticated:
-        return render(request, 'professors/login.html')
+        return redirect('login')
     return render(request, "professors/upload.html")
 
 
@@ -16,9 +17,15 @@ User = get_user_model()
 def signup(request):
     if request.method == "POST":
         # Traiter le formulaire
+        last_name = request.POST.get("lastname")
+        first_name = request.POST.get("firstname")
+        email = request.POST.get("email")
         username = request.POST.get("username")
         password = request.POST.get("password")
-        user = User.objects.create_user(username=username, 
+        user = User.objects.create_user(last_name=last_name,
+                                        first_name=first_name,
+                                        email=email,
+                                        username=username, 
                                         password=password)
         login(request, user)
         return redirect('professors-upload')

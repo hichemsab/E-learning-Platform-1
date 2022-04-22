@@ -19,35 +19,51 @@
 	<div class="navbar">
 		<p class="logo"><a href="index.html">SQUARE</a></p>
 		<ul class="list">
-			<li><a href="index.html">Accueil</a></li>
-			<li><a href="">Contact</a></li>
-			<li><a href="">A propos de</a></li>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="#about">About</a></li>
+			<li><a href="#contact">Contact</a></li>
 		</ul>
 		<p class="signup"><a href="{% url 'login' %}">Se connecter</a></p>
 	</div>
-	<div class="line"></div>
 	<div class="corp">
-		<div id="write"><h1>Université Abess Laghrour Khenchela</h1>
-		<h6>Une plateforme en-ligne pour les étudiants et les professeurs</h6><br><br><br><br><br>
-		<p><a href="{% url 'choice' %}">COMMENCER</a></p></div>
+		<div id="write"><h1>Abess Laghrour Khenchela University</h1>
+		<h6>An online platform for the Students and Professor</h6><br><br><br><br><br>
+		<p><a href="{% url 'choice' %}">Get Started</a></p></div>
 		<img src="{% static 'css/Square/image/elearn.png' %}" alt="E-learning Space" style="width:600px;">
 		
 	</div>	
-</body>
 
-<footer>
-	<div class="line"></div>
-	<div class="footer">
-		<ul class="phone">Phone:
-			<li>+213-999-999-999</li>
-		</ul>
-		<ul class="email">Email:
-			<li>admin@univ-khenchela.dz</li>
-		</ul>
-		<ul class="smedia">Social media:
-			<li><a href="facebook.com"><img src="{% static 'css/Square/image/fb.png' %}" alt="facebook" style="width:50px;"></a><a href="twitter.com"><img src="{% static 'css/Square/image/twt.png' %}" alt="twitter" style="width:25px;"></a></li>
-		</ul>
+	<div class="aboutt" id="about"><h1>About</h1></div>
+	<div class="about">
+		<div class="three"><img src="{% static 'css/Square/image/about.png' %}"  alt="Eduation"></div>
+		<div class="one">
+			<h1>Built and Developed by:</h1>
+				<div class="two">
+					<ul><li>TAOUS Mohamed</li>
+					<li>MEBARKIA Abdennour</li>
+					<li>SABEG Hichem</li></ul>
+				</div> <br><br>
+			<h2>An educational Web-site where Students have the access to the Courses, Home-work, Projects, Quizz, Exams and Planning. and also where Professors have tha ability to share them Courses, Home-work, Projects, Quizz, Exams.<br><br> Using: HTML - CSS - JS - DJANGO - SQLITE <br> As a graduation Project</h2>
+		</div>
+
 	</div>
-</footer>
 
+	<div class="foot" id="contact">
+		
+		<div class="footone"> <h1>Get in touch</h1><h6>Looking forward to <br> hear from you</h6>
+		</div>
+		<div class="foottwo">
+			<ul class="phone">Phone:
+				<li>+213-999-999-999</li>
+			</ul>
+			<ul class="email">Email:
+				<li>admin@univ-khenchela.dz</li>
+			</ul>
+			<ul class="smedia">Location:
+				<li>Khenchela - Rue 999</li>
+			</ul>
+		</div>
+		
+	</div>
+</body>
 </html>

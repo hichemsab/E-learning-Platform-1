@@ -68,13 +68,13 @@ top: 40px;
 left: 0;
 width: 0%;
 height: 2px;
-background: #838bc2;
+background: #838BC2;
 transition: .5s;
 }
 .textfield input:focus ~ label,
 .textfield input:valid ~ label{
 top: -5px;
-color: #838bc2;
+color: #838BC2;
 }
 .textfield input:focus ~ span::before,
 .textfield input:valid ~ span::before{
@@ -100,7 +100,7 @@ outline: none;
 }
 
 input[type="submit"]:hover{
-border-color: #838bc2;
+border-color: #838BC2;
 transition: .5s;
 }
 

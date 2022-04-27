@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+	<title>Square</title>
+	<meta name="viewport" content="width=device-width, iniciale-scale=1">
+	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/accounts/navfooter.css' %}">
+	<link rel="stylesheet" href="{% static 'css/accounts/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/accounts/set.css' %}">
+
+
+</head>
+
+<body>
+	
+	<div class="navbar">
+		<p class="logo"><a href="index.html">{{ user.username }}</a></p>
+		<ul class="list">
+			<li><a href="index.html">Home</a></li>
+			<li><a href="#" onclick="document.getElementById('id1').style.display = 'flex'">Settings</a></li>
+			<li><a href="">Contact</a></li>
+		</ul>
+		<p class="signup"><a href="{% url 'logout' %}">Log Out</a></p>
+	</div>
+
+<div class="container">
+    <img src="{% static 'css/accounts/image/Login.png' %}">
+	<div class="cont">
+		<div class="row">
+			
+			<div class="courses">
+				<h1 class="title"><a href="">{{ mod1 }}</a></h1>
+				<h6>Click on the Cours title to Upload/Add courses, exams or home-work </h6>
+			</div>
+			<div class="courses">
+				<h1 class="title"><a href="">{{ mod2 }}</a></h1>
+				<h6>Click on the Cours title to Upload/Add courses, exams or home-work </h6>
+			
+			
+			</div>
+		</div>
+		<div class="row">
+			<div class="courses">
+				<h1 class="title"><a href="">{{ mod3 }}</a></h1>
+				<h6>Click on the Cours title to Upload/Add courses, exams or home-work </h6>
+			</div>
+			<div class="courses">
+				<h1 class="title"><a href="">DW</a></h1>
+				<h6>Click on the Cours title to Upload/Add courses, exams or home-work </h6>
+			</div>
+		</div>
+	</div>
+</div>
+	
+</body>
+
+<footer>
+	<div class="footer">
+		<ul class="phone">Phone:
+			<li>+213-999-999-999</li>
+		</ul>
+		<ul class="email">Email:
+			<li>admin@univ-khenchela.dz</li>
+		</ul>
+		<ul class="smedia">Social media:
+			<li><a href="fb.com"><img src="/ProjetFinEtude/Website/image/fb.png" alt="facebook" style="width:50px;"></a><a href="twitter.com"><img src="/ProjetFinEtude/Website/image/twt.png" alt="twitter" style="width:25px;"></a></li>
+		</ul>
+	</div>
+</footer>
+
+<div class="bg-model" id="id1">
+	<div class="sm-model">
+		<div class="close"><a href="#" onclick="document.getElementById('id1').style.display = 'none'">+</a></div>
+		<div class="user">
+			<img src="{% static 'css/professors/image/User.png' %}" alt="user">
+			<h1>Mohamed TAOUS</h1>
+		</div>
+		<div class="list-sett">
+			<h1><a href="#" onclick="show('Section1');">Change  User-Name:</a></h1>
+			<div class="lin"></div>
+			<h1><a href="#" onclick="show('Section2');">Change E-mail:</a> </h1>
+			<div class="lin"></div>
+			<h1><a href="#" onclick="show('Section3');">Change Password:</a> </h1>
+		 </div>
+		
+		 <div id="Section1">
+			<div class="change-username">
+					
+			<div class="input">
+				<form method="POST" class="infos">
+				<div class="textfield"><input id="username" type="text" name="username" required><span></span><label for="username">New User name</label></div>
+				<div class="textfield"><input id="username" type="text" name="username" required><span></span><label for="username">Confirm User name</label></div>
+			</form>
+			</div>
+			<div class="submit">
+				<input type="submit" value="Confirm">
+			</div>
+	
+		</div></div>
+	  
+		<div id="Section2" style="display: none;"><div class="change-username">
+			<div class="input">
+				<form method="POST" class="infos">
+				<div class="textfield"><input id="email" type="text" name="email" required><span></span><label for="email">New E-mail</label></div>
+				<div class="textfield"><input id="email" type="text" name="email" required><span></span><label for="email">Confirm E-mail</label></div>
+			</form>
+			</div>
+			<div class="submit">
+				<input type="submit" value="Confirm">
+			</div>
+	
+		</div></div>
+		
+	  <div id="Section3" style="display: none;"><div class="change-username">
+		<div class="input">
+			<form method="POST" class="infos">
+			<div class="textfield"><input id="password" type="password" name="password" required><span></span><label for="password">New Password</label></div>
+			<div class="textfield"><input id="password" type="password" name="password" required><span></span><label for="password">Confirm Password</label></div>
+		</form>
+		</div>
+		<div class="submit">
+			<input type="submit" value="Confirm">
+		</div>
+	
+	</div></div>
+	</div>
+</div>
+
+<script>
+	var divs = ["Section1", "Section2", "Section3", "Section4"];
+	var visibleId = null;
+	function show(id) {
+	  if(visibleId !== id) {
+		visibleId = id;
+	  } 
+	  hide();
+	}
+	function hide() {
+	  var div, i, id;
+	  for(i = 0; i < divs.length; i++) {
+		id = divs[i];
+		div = document.getElementById(id);
+		if(visibleId === id) {
+		  div.style.display = "block";
+		} else {
+		  div.style.display = "none";
+		}
+	  }
+	}  
+ </script>
+
+</html>

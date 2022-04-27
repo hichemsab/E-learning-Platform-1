@@ -10,7 +10,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/accounts/navfooter.css' %}">
-    <link rel="stylesheet" href="{% static 'css/accounts/login2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/accounts/login.css' %}">
 
 </head>
 
@@ -30,8 +30,8 @@
 		<img src="{% static 'css/accounts/image/Login.png' %}">
 	<div class="login">
 		<h1>Log in</h1>
-		<form method="POST" class="infos">
-   			 {% csrf_token %}
+		<form method="POST" >
+   			{% csrf_token %}
 			<div class="textfield"><input id="username" type="text" name="username" required><span></span><label for="username">User name</label></div>
 			<div class="textfield"><input id="password" type="password" name="password" required><span></span><label for="password">Password</label></div>
 			<div class="secnct"><input type="submit" value="Login"></div>

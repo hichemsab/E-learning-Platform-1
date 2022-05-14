@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+	<title>Square</title>
+	<meta name="viewport" content="width=device-width, iniciale-scale=1">
+	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/accounts/style.css' %}">
+	<link rel="stylesheet" href="{% static 'css/accounts/navfooter.css' %}">
+
+
+
+</head>
+
+<body>
+
+    <div class="navbar">
+        <p class="logo"><a href="index.html">SQUARE</a></p>
+        <ul class="list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="">Contact</a></li>
+            <li><a href="">About</a></li>
+        </ul>
+        <p class="signup"><a href="{% url 'logout' %}">Log out</a></p>
+
+    </div>
+    <div class="line"></div>
+
+   <div class="bod">
+    <a href="{% url 'admin_professor' %}">
+        <div class="proff">
+            <img src="{% static 'css/accounts/image/prof.png' %}" >
+            <h1  >Professor</h1>
+        </div>
+    </a>
+
+  
+
+    <a href="{% url 'admin_student' %}">
+        <div class="studd">
+            <img src="{% static 'css/accounts/image/student.png' %}" >
+            <h1>Student</h1>
+        </div>
+    </a>
+</div>
+
+</body>
+
+</html>

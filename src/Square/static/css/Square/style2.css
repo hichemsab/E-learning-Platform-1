@@ -20,19 +20,6 @@
 	font-family: 'Manrope', sans-serif;
 	font-size: 16px;
 }
-.corp p{
-	padding: 0 150px;
-	font-family: 'Manrope', sans-serif;
-	
-}
- .corp p a{
-	 font-size: 18px;
-	 padding: 11px 40px;
-	 border: 1px solid #333F63;
-	 background-color: #333F63;
-	 color: #D7D4DD;
-	 border-radius: 22px;
- }
  
  .about{
 	padding-top: 30px;
@@ -52,7 +39,7 @@
 	font-weight: 700;
 	padding: 10px;
 	background-color: #D7D4DD;
-	color: #333F63;}
+color: #333F63;}
 
 .about li{
 	color: #333F63;
@@ -143,3 +130,6 @@
 	font-size: 16px;
 	font-weight: 400;
 }
+
+/* login pop up style */
+

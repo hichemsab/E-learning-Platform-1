@@ -1,0 +1,106 @@
+{% load static %}
+{% block content%}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Square</title>
+        <meta name="viewport" content="width=device-width, iniciale-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">    
+    	<link rel="stylesheet" href="{% static 'css/accounts/style1.css' %}">
+    	<link rel="stylesheet" href="{% static 'css/accounts/navfooter.css' %}">
+    </head>
+
+    <body>
+        <div class="navbar">
+            <p class="logo"><a href="index.html">SQUARE</a></p>
+            <ul class="list">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">About</a></li>
+            </ul>
+            <p class="signup"><a href="{% url 'logout' %}">Log out</a></p>
+    
+        </div>
+        <div class="line"></div>
+
+
+        <div class="body">
+
+            <div class="AddProf">
+                <h1>Add Student</h1>
+                <form method="post"> 
+                    {% csrf_token %} 
+                    <div class="textfield"><input id="lastname" type="text" name="lastname" required><span></span><label for="lastname">Family Name:</label></div>
+                    <div class="textfield"><input id="firstname" type="text" name="firstname" required><span></span><label for="firstname">First Name:</label></div>
+                    <div class="textfield"><input id="username" type="text" name="username" required><span></span><label for="username">Username:</label></div>
+                    <div class="textfield">	<input id="email" type="text" name="email" required><span></span><label for="email">E-mail:</label></div>     
+                    <div class="textfield"><input id="password" type="password" name="password" required><span></span> <label for="password">Password:</label></div>
+                
+                    <div class="gender">
+                        <select name="gender">
+                            <option >Gender:</option>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
+                        </select>
+                    </div>
+
+                    <div class="gender">
+                    <select name="Speciality">
+                        {% for speciality in specialities %}
+                            <option value="{{ speciality.id }}">{{ speciality }}</option>
+                        {% endfor %}
+                      </select>
+                    </div>
+
+                    <div class="submitt">
+                        <button type="submit" name="add_new_prof">Add and send e-mail</button>
+                    </div>
+                </form>
+                
+                </div>
+
+            <div class="AddProf">
+                    <h1>Delete Student</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="textfield"><input id="username" type="text" name="username" required><span></span><label for="username">Username:</label></div>
+
+                    <div class="checkBox">
+                            <label>
+                                <input type="checkbox" name="Check" value="sure">
+                                <p>I am sure</p>
+                            </label>
+                        </div>
+
+                        <div class="submitt">
+                            <button type="submit" >Delete</button>
+                        </div>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="message">
+        {% if messages %}
+    	    {% for message in messages %}
+			<ul>
+    		<li style="color: red "{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            </ul>
+            {% endfor %}
+        {% endif %}
+        </div>
+
+        
+ 
+
+
+    </body>
+
+
+
+
+</html>
+{% endblock %}

@@ -9,9 +9,8 @@
 	<meta name="viewport" content="width=device-width, iniciale-scale=1">
 	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/accounts/navfooter.css' %}">
-	<link rel="stylesheet" href="{% static 'css/accounts/main.css' %}">
-	<link rel="stylesheet" href="{% static 'css/accounts/set.css' %}">
+	<link rel="stylesheet" href="{% static 'css/accounts/h.css' %}">
+	<link rel="stylesheet" href="{% static 'css/accounts/navfooter.css' %}">
 
 
 </head>
@@ -19,43 +18,68 @@
 <body>
 	
 	<div class="navbar">
-		<p class="logo"><a href="index.html">{{ user.username }}</a></p>
+		<p class="logo"><a href="index.html">{{ user.username}}</a></p>
 		<ul class="list">
 			<li><a href="index.html">Home</a></li>
 			<li><a href="#" onclick="document.getElementById('id1').style.display = 'flex'">Settings</a></li>
 			<li><a href="">Contact</a></li>
+            {% if messages %}
+    		{% for message in messages %}
+    		<li style="color: white "{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            <style>
+                .navbar {
+                    background-color: rgb(212, 52, 52);
+                }
+                </style>
+            <li><a style="color: white " href="{% url 'upload' %}" >Cancel</a></li>
+
+			{% endfor %}
+			
+			{% endif %}
 		</ul>
 		<p class="signup"><a href="{% url 'logout' %}">Log Out</a></p>
 	</div>
+		<form class="form" method="POST" enctype="multipart/form-data" name="choisir">
+			{% csrf_token %}
 
-<div class="container">
-    <img src="{% static 'css/accounts/image/Login.png' %}">
-	<div class="cont">
-		<div class="row">
-			
-			<div class="courses">
-				<h1 class="title"><a href="">{{ mod1 }}</a></h1>
-				<h6>Click on the Cours title to Upload/Add courses, exams or home-work </h6>
+			<div class="s-model">
+				
+				<h1 class="Upcourse">Upload:</h1>
+
+					<div class="textfield" ><input id="title" type="title" name="title" required><span></span><label for="title">File Title:</label></div>
+					<div class="rBtn">
+						<input class="course" type="radio" name="modu" value="{{ mod1 }}" onclick="document.getElementById('id2').style.display = 'flex'">{{ mod1 }}<br>	
+						<input class="course" type="radio" name="modu" value="{{ mod2 }}" onclick="document.getElementById('id2').style.display = 'flex'">{{ mod2 }}<br>	
+						{% if mod3 %}
+						<input class="course" type="radio" name="modu" value="{{ mod3 }}" onclick="document.getElementById('id2').style.display = 'flex'">{{ mod3 }}<br>	
+						{% endif %}
+						{% if mod4 %} 
+						<input class="course" type="radio" name="modu" value="{{ mod4 }}" onclick="document.getElementById('id2').style.display = 'flex'">{{ mod4 }}<br>			
+						{% endif %}
+
+					</div>
+	
+					<div class="box">
+						<select name="Option">
+						  <option disabled>Choose an option:</option>
+						  <option>Courses</option>
+						  <option>Home-workes</option>
+						  <option>Correction</option>
+						  <option>TD</option>
+						  <option>TP</option>
+						</select>
+					  </div>
+
+					  <div class="elem">
+						<input type="file" id="real-file" name="fichier" hidden="hidden" />
+						<button type="button" id="custom-button">CHOOSE A FILE</button>
+						<span id="custom-text">No file chosen, yet.</span>
+					</div>
+					<button type="submit" id="custom-button" class="btnBtn" style="margin-top: 20px;">Submit</button>        
 			</div>
-			<div class="courses">
-				<h1 class="title"><a href="">{{ mod2 }}</a></h1>
-				<h6>Click on the Cours title to Upload/Add courses, exams or home-work </h6>
-			
-			
-			</div>
-		</div>
-		<div class="row">
-			<div class="courses">
-				<h1 class="title"><a href="">{{ mod3 }}</a></h1>
-				<h6>Click on the Cours title to Upload/Add courses, exams or home-work </h6>
-			</div>
-			<div class="courses">
-				<h1 class="title"><a href="">DW</a></h1>
-				<h6>Click on the Cours title to Upload/Add courses, exams or home-work </h6>
-			</div>
-		</div>
-	</div>
-</div>
+		
+	 
+		</form>
 	
 </body>
 
@@ -68,7 +92,7 @@
 			<li>admin@univ-khenchela.dz</li>
 		</ul>
 		<ul class="smedia">Social media:
-			<li><a href="fb.com"><img src="/ProjetFinEtude/Website/image/fb.png" alt="facebook" style="width:50px;"></a><a href="twitter.com"><img src="/ProjetFinEtude/Website/image/twt.png" alt="twitter" style="width:25px;"></a></li>
+			<li><a href="fb.com"><img src="{% static 'css/accounts/image/fb.png' %}" alt="facebook" style="width:50px;"></a><a href="twitter.com"><img src="{% static 'css/accounts/image/twt.png' %}" alt="twitter" style="width:25px;"></a></li>
 		</ul>
 	</div>
 </footer>
@@ -77,7 +101,7 @@
 	<div class="sm-model">
 		<div class="close"><a href="#" onclick="document.getElementById('id1').style.display = 'none'">+</a></div>
 		<div class="user">
-			<img src="{% static 'css/professors/image/User.png' %}" alt="user">
+			<img src="{% static 'css/accounts/image/PP.png' %}" alt="user" style="width: 20%;"  >
 			<h1>Mohamed TAOUS</h1>
 		</div>
 		<div class="list-sett">
@@ -93,46 +117,57 @@
 					
 			<div class="input">
 				<form method="POST" class="infos">
-				<div class="textfield"><input id="username" type="text" name="username" required><span></span><label for="username">New User name</label></div>
-				<div class="textfield"><input id="username" type="text" name="username" required><span></span><label for="username">Confirm User name</label></div>
+					
+					{% csrf_token %}
+					<div class="cntr">
+				<div class="textfield"><input id="username" type="text" name="old_username" required><span></span><label for="username">Old User name</label></div>
+				<div class="textfield"><input id="username" type="text" name="new_username" required><span></span><label for="username">New User name</label></div>
+			</div>
+
+				<input type="submit" value="Confirm">
+
+
 			</form>
 			</div>
-			<div class="submit">
-				<input type="submit" value="Confirm">
-			</div>
-	
 		</div></div>
 	  
 		<div id="Section2" style="display: none;"><div class="change-username">
 			<div class="input">
 				<form method="POST" class="infos">
-				<div class="textfield"><input id="email" type="text" name="email" required><span></span><label for="email">New E-mail</label></div>
-				<div class="textfield"><input id="email" type="text" name="email" required><span></span><label for="email">Confirm E-mail</label></div>
-			</form>
+					{% csrf_token %}
+					<div class="cntr">
+				<div class="textfield"><input id="email" type="text" name="old_email" required><span></span><label for="email">Old E-mail</label></div>
+				<div class="textfield"><input id="email" type="text" name="new_email" required><span></span><label for="email">New E-mail</label></div>
 			</div>
-			<div class="submit">
-				<input type="submit" value="Confirm">
+				<input type="submit" value="Confirm">			
+				</form>
 			</div>
+			
 	
 		</div></div>
 		
 	  <div id="Section3" style="display: none;"><div class="change-username">
 		<div class="input">
 			<form method="POST" class="infos">
-			<div class="textfield"><input id="password" type="password" name="password" required><span></span><label for="password">New Password</label></div>
-			<div class="textfield"><input id="password" type="password" name="password" required><span></span><label for="password">Confirm Password</label></div>
+				{% csrf_token %}
+				<div class="cntr">
+			<div class="textfield"><input id="password" type="password" name="old_password" required><span></span><label for="password">Old Password</label></div>
+			<div class="textfield"><input id="password" type="password" name="new_password" required><span></span><label for="password">New Password</label></div>
+		</div>
+			<input type="submit" value="Confirm">
+			
 		</form>
 		</div>
-		<div class="submit">
-			<input type="submit" value="Confirm">
-		</div>
-	
-	</div></div>
+	</div>
+    </div>
 	</div>
 </div>
 
+
+
 <script>
-	var divs = ["Section1", "Section2", "Section3", "Section4"];
+
+var divs = ["Section1", "Section2", "Section3", "Section4"];
 	var visibleId = null;
 	function show(id) {
 	  if(visibleId !== id) {
@@ -152,6 +187,27 @@
 		}
 	  }
 	}  
+
+	const realFileBtn = document.getElementById("real-file");
+	const customBtn = document.getElementById("custom-button");
+	const customTxt = document.getElementById("custom-text");
+
+	customBtn.addEventListener("click", function() {
+	realFileBtn.click();
+	});
+
+	realFileBtn.addEventListener("change", function() {
+	if (realFileBtn.value) {
+		customTxt.innerHTML = realFileBtn.value.match(
+		/[\/\\]([\w\d\s\.\-\(\)]+)$/
+		)[1];
+	} else {
+		customTxt.innerHTML = "No file chosen, yet.";
+	}
+	});
+	
+	
  </script>
+
 
 </html>

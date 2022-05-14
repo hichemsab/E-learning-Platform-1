@@ -94,13 +94,13 @@ img{
 	font-weight: 300;
 	}
 	
-	form .textfield{
+form .textfield{
 	position: relative;
 	border-bottom: 1px solid #333F63;
 	margin: 30px 0;
 	}
 	
-	.textfield input{
+.textfield input{
 	width: 100%;
 	padding: 0 5px;
 	height: 40px;
@@ -110,7 +110,7 @@ img{
 	outline: none;
 	}
 	
-	.textfield label{
+.textfield label{
 	position: absolute;
 	top: 50%;
 	left: 5px;
@@ -121,7 +121,7 @@ img{
 	transition: .5s;
 	}
 	
-	.textfield span::before{
+.textfield span::before{
 	content: '';
 	position: absolute;
 	top: 40px;
@@ -131,43 +131,23 @@ img{
 	background: #838bc2;
 	transition: .5s;
 	}
-	.textfield input:focus ~ label,
-	.textfield input:valid ~ label{
+.textfield input:focus ~ label,
+.textfield input:valid ~ label{
 	top: -5px;
 	color: #838bc2;
 	}
-	.textfield input:focus ~ span::before,
-	.textfield input:valid ~ span::before{
+.textfield input:focus ~ span::before,
+.textfield input:valid ~ span::before{
 	width: 100%;
 	}
-	
-	input[type="submit"]{
-	width: 220%;
-	height: 40px;
-    font-family: 'Manrope', sans-serif;
 
-	border: 1px solid #333F63;
-	background: #D7D4DD;
-	font-size: 18px;
-	color: #333F63;
-	font-weight: 400;
-	cursor: pointer;
-	outline: none;
-	
-	}
-	
-	input[type="submit"]:hover{
-	border-color: #6779b1;
-    color: #6779b1;
-	transition: .5s;
-	}
 	
 	.container img{
 		width: 100%;
 	}
 
 
-	input .btn{
+input .btn{
 		width: 25px;
 	}
 
@@ -192,6 +172,7 @@ img{
    .list-sett a{
     color: #333F63;
     }
-    .submit{
-        padding-right: 20px;
-    }
+
+.confirm{
+	width: 100px;
+}

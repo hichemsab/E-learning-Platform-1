@@ -1,0 +1,206 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+
+.body{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.AddProf, .DeleteP{
+    margin: 50px 0 30px;
+    width:45%;
+    background-color: #D7D4DD;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px #a5a0ad;
+
+}
+
+form{
+    width: 75%;
+    margin: auto;
+}
+
+/*Styling the head Title*/
+
+.AddProf h1{
+	text-align: center;
+	padding: 20px 0px;
+	border-bottom: 1px solid silver;
+	font-family: 'Bodoni Moda', serif;
+	font-size: 40px;
+	font-weight: 900;
+	color: #333F63;
+}
+
+/*Styling the inputs */
+
+
+.textfield label{
+	font-family: 'Manrope', sans-serif;
+	font-size: 20px;
+	font-weight: 300;
+}
+
+form .textfield{
+  position: relative;
+  border-bottom: 1px solid #333F63;
+  margin: 30px 0;
+}
+
+.textfield input{
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.textfield label{
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #333F63;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+  transition: .5s;
+}
+
+.textfield span::before{
+  content: '';
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #838bc2;
+  transition: .5s;
+}
+
+.textfield input:focus ~ label,
+.textfield input:valid ~ label{
+  top: -5px;
+  color: #838bc2;
+}
+.textfield input:focus ~ span::before,
+.textfield input:valid ~ span::before{
+  width: 100%;
+}
+
+/* Styling submit button */
+
+button{
+    width: 50%;
+    padding: 10px 20px;
+    background-color: #D7D4DD;
+    border: 1px solid #333F63;
+    color: #333F63;
+    cursor: pointer;
+    margin: 15px 0 30px;
+}
+button:hover{
+    border: 1px solid #838bc2;
+    color: #838bc2;   
+}
+
+/*Droplist Style*/
+
+.gender {
+	justify-content: space-around;
+	font-family: 'Manrope', sans-serif;
+	font-size: 18px;
+	font-weight: 300;
+    margin-bottom: 20px;
+  }
+  
+  .gender select {
+	font-family: 'Manrope', sans-serif;
+	font-size: 18px;
+	font-weight: 300;
+	background-color: #333F63;
+	color: #D7D4DD;
+	padding: 12px;
+	width: 85%;
+	border: none;
+	-webkit-appearance: button;
+	appearance: button;
+	outline: none;
+  }
+  
+  .gender::before {
+	font-family: 'Manrope', sans-serif;
+	font-size: 18px;
+	font-weight: 300;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 20%;
+	height: 70px;
+	text-align: center;
+	line-height: 45px;
+	color: white;
+	background-color: #4180c7; 
+ }
+
+  
+  .gender:hover::before {
+	color: #D7D4DD;
+	background-color: #4180c7;  
+}
+  
+  .gender select option {
+	padding: 30px;
+  }
+
+  /*Check box style*/
+
+.checkBox label{
+    font-family: 'Manrope', sans-serif;
+	font-size: 15px;
+	font-weight: 300;
+    width: 45%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #333F63;
+}
+
+input[type="checkbox"]{
+      height: 15px;
+      width: 15px;
+      border-radius: 3px;
+      cursor: pointer;
+      outline: none;
+    }
+
+
+
+/*MESSAGE*/
+
+.message{
+    width: 50%;
+    margin: auto;
+    background-color: #D7D4DD;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px #a5a0ad;
+    margin-bottom: 70px;
+}
+
+.message ul{
+    text-align: center;
+    align-items: center;
+    font-family: 'Manrope', sans-serif;
+	font-size: 30px;
+	font-weight: 400;
+    color: #333F63;
+    padding: 35px 0px;
+}
+

@@ -10,7 +10,7 @@ class Module(models.Model):
     name = models.CharField(max_length=100, null=False, blank=False)
     coeffcient = models.IntegerField(null=False, blank=False)
     credit = models.IntegerField(null=False, blank=False)
-    Speciality = models.ForeignKey("accounts.Speciality", on_delete=models.DO_NOTHING, null=True)
+    Speciality = models.ForeignKey("accounts.Speciality", on_delete=models.SET_NULL, null=True)
 
 
     def __str__(self):
@@ -18,7 +18,7 @@ class Module(models.Model):
 
 class Cour(models.Model):
     title = models.CharField(max_length=100, null=True, blank=True)
-    cour = models.FileField()
+    cour = models.FileField(upload_to='Cour')
     module = models.ForeignKey(Module, null=True, on_delete= models.SET_NULL)
 
     def __str__(self):
@@ -26,8 +26,7 @@ class Cour(models.Model):
 
 class Td(models.Model):
     title = models.CharField(max_length=100, null=True, blank=True)
-    td = models.FileField(blank=True, null=True)
-    correction = models.FileField(blank=True, null=True)
+    td = models.FileField(upload_to='TD', blank=True, null=True)
     module = models.ForeignKey(Module, null=True, on_delete= models.SET_NULL)
 
     def __str__(self):
@@ -35,8 +34,7 @@ class Td(models.Model):
 
 class Tp(models.Model):
     title = models.CharField(max_length=100, null=True, blank=True)
-    tp = models.FileField()
-    correction = models.FileField(blank=True, null=True)
+    tp = models.FileField(upload_to='TP')
     module = models.ForeignKey(Module, null=True, on_delete= models.SET_NULL)
 
     def __str__(self):
@@ -45,8 +43,15 @@ class Tp(models.Model):
 
 class homework(models.Model):
     title = models.CharField(max_length=100, null=True, blank=True)
-    quizz = models.FileField()
-    correction = models.FileField(blank=True, null=True)
+    quizz = models.FileField(upload_to='homework')
+    module = models.ForeignKey(Module, null=True, on_delete= models.SET_NULL)
+
+    def __str__(self):
+        return self.title
+
+class correction(models.Model):
+    title = models.CharField(max_length=100, null=True, blank=True)
+    correction = models.FileField(upload_to='correction')
     module = models.ForeignKey(Module, null=True, on_delete= models.SET_NULL)
 
     def __str__(self):

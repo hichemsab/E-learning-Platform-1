@@ -2,48 +2,34 @@ from re import M
 from turtle import mode
 from django.db import models
 from django.contrib.auth.models import AbstractUser, User
-from django.contrib.auth.models import UserManager
+from django.forms import ValidationError
 from content.models import Module
+from django.core.exceptions import ValidationError
 
 
 # Create your models here.
 
-
-
-class Year(models.Model):
-    YEARS = (
-        ('L1', 'L1'),
-        ('L2', 'L2'),
-        ('L3', 'L3'),
-        ('M1', 'M1'),
-        ('M2', 'M2'),
-    )
-    year = models.CharField(max_length=2, choices=YEARS, default='L1', null=False, blank=False)
-    def __str__(self):
-        return self.year
-
 class Speciality(models.Model):
     SPECIALITY = (
-        ('MI', 'MI'),
-        ('INFO', 'INFO'),
-        ('MATH', 'MATH'),
-        ('SI', 'SI'),
-        ('ISIL', 'ISIL'),
-        ('MATH', 'MATH'),
-        ('STW', 'STW'),
-        ('GLSD', 'GLSD'),
-        ('MATHAPPLQ', 'MATHAPPLQ'),
-        ('STW', 'STW'),
-        ('GLSD', 'GLSD'),
-        ('MATHAPPLQ', 'MATHAPPLQ'),
+        ('MI - L1', 'MI - L1'),
+        ('INFO - L2', 'INFO - L2'),
+        ('MATH - L2', 'MATH - L2'),
+        ('SI - L3', 'SI - L3'),
+        ('ISIL - L3', 'ISIL - L3'),
+        ('MATH - L3', 'MATH - L3'),
+        ('STW - M1', 'STW - M1'),
+        ('GLSD - M1', 'GLSD - M1'),
+        ('MATHAPPLQ - M1', 'MATHAPPLQ - M1'),
+        ('STW - M2', 'STW - M2'),
+        ('GLSD - M2', 'GLSD - M2'),
+        ('MATHAPPLQ - M2', 'MATHAPPLQ - M2'),
     )
         
-    speciality = models.CharField(max_length=10, choices=SPECIALITY, default='MI', null=False, blank=False)
-    year = models.ForeignKey(Year,null=True, on_delete= models.SET_NULL)
+    speciality = models.CharField(max_length=20, choices=SPECIALITY, default='MI', null=False, blank=False, unique=True)
 
+    
     def __str__(self):
-        return "{} - {}" .format(self.speciality, self.year)
-      
+        return self.speciality
 
 
 
@@ -56,13 +42,17 @@ class User(AbstractUser):
     )
     is_student = models.BooleanField(default=False)
     is_professor = models.BooleanField(default=False)
-    gender = models.CharField(max_length=1, default='M', null=False, blank=False)
+    gender = models.CharField(max_length=1, default='M', null=True, blank=False)
     
 
 class Professor(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True, related_name='Professor')
     modules = models.ManyToManyField(Module)
 
+    def clean(self, *args, **kwargs):
+        if self.modules.count() > 4:
+            raise ValidationError("You can't assign more than three modules")
+        super(Professor, self).clean(*args, **kwargs)
     
 
     def __str__(self):

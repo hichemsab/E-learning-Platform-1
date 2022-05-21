@@ -29,7 +29,7 @@ def admin_professor(request):
     print(request.POST)
     print("===========================")
 
-    modules = Module.objects.all()[29:33]
+    modules = Module.objects.all()
 
     
 
@@ -226,7 +226,7 @@ def login_administrator(request):
                 messages.error(request, 'you are not part of the administration')
         
         else:
-            messages.error(request, 'username or password not valid')
+            messages.error(request, 'Username or Password invalid')
 
     return render(request, 'accounts/login.html')
 

@@ -45,12 +45,12 @@
                         </select>
                     </div>
                     <div class="checkBox">
-                        {% for module in modules %}
-                        <label>
-                            <span>{{ module }}</span>
-                            <input type="checkbox" name="modules" value="{{ module.id }}">
-                        </label>
-                        {% endfor %}
+                        
+                        <select name="modules" multiple>
+                            {% for module in modules %}
+                            <option value="{{ module.id }}">{{ module.name }}</option>
+                            {% endfor %}
+                        </select>
                     </div>
                     <div class="submitt">
                         <button type="submit" name="add_new_prof">Add and send e-mail</button>

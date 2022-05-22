@@ -19,11 +19,11 @@
 <body>
 
     <div class="navbar">
-        <p class="logo"><a href="index.html">SQUARE</a></p>
+        <p class="logo"><a href="{% url 'admin_choice' %}">SQUARE</a></p>
         <ul class="list">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="">Contact</a></li>
-            <li><a href="">About</a></li>
+            <li><a href="{% url 'admin_choice' %}">Home</a></li>
+			<li><a href="{% url 'about' %}" >About</a></li>
+			<li><a href="{% url 'contact' %}">Contact</a></li>
         </ul>
         <p class="signup"><a href="{% url 'logout' %}">Log out</a></p>
 

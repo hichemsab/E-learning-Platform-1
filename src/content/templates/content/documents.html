@@ -19,11 +19,11 @@
 
 <body>
     <div class="navbar">
-		<p class="logo"><a href="index.html">{{ user.username}}</a></p>
+		<p class="logo"><a href="{% url 'documents' %}">{{ user.last_name | upper }} {{ user.first_name }}</a></p>
 		<ul class="list">
-			<li><a href="index.html">Home</a></li>
-			<li><a href="#" >About</a></li>
-			<li><a href="">Contact</a></li>
+			<li><a href="{% url 'documents' %}">Home</a></li>
+			<li><a href="{% url 'about' %}" >About</a></li>
+			<li><a href="{% url 'contact' %}">Contact</a></li>
             
 		</ul>
 		<p class="signup"><a href="{% url 'logout' %}">Log Out</a></p>
@@ -36,8 +36,6 @@
             <h1>{{module.name}}</h1>
             <h4>Coefficient: {{module.coeffcient}}</h4>
             <h4>Credit: {{module.credit}}</h4>
-            <h4>Professor: M. TAOUS</h4>
-            <h4>Professor's E-mail: example@gmail.com</h4>
     
         </div>
         <table>

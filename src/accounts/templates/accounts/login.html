@@ -17,13 +17,12 @@
 <body>
 	
 	<div class="navbar">
-		<p class="logo"><a href="index.html">SQUARE</a></p>
+		<p class="logo"><a href="{% url 'login' %}">SQUARE</a></p>
 		<ul class="list">
 			<li><a href="{% url 'login' %}">Home</a></li>
-			<li><a href="#about">About</a></li>
-			<li><a href="#contact">Contact</a></li>
+			<li><a href="{% url 'about' %}" >About</a></li>
+			<li><a href="{% url 'contact' %}">Contact</a></li>
 		</ul>
-		<p class="signup"><a href="">Rejoindre</a></p>
 	</div>
 
 	<div class="container">

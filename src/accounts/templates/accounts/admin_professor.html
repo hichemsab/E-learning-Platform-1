@@ -13,15 +13,16 @@
 
     <body>
         <div class="navbar">
-            <p class="logo"><a href="index.html">SQUARE</a></p>
+            <p class="logo"><a href="{% url 'admin_choice' %}">SQUARE</a></p>
             <ul class="list">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="">Contact</a></li>
-                <li><a href="">About</a></li>
+                <li><a href="{% url 'admin_choice' %}">Home</a></li>
+                <li><a href="{% url 'about' %}" >About</a></li>
+                <li><a href="{% url 'contact' %}">Contact</a></li>
             </ul>
             <p class="signup"><a href="{% url 'logout' %}">Log out</a></p>
     
         </div>
+         
         <div class="line"></div>
 
 
@@ -46,7 +47,12 @@
                     </div>
                     <div class="checkBox">
                         
-                        <select name="modules" multiple>
+                        <select name="modules" multiple style="background-color: #D7D4DD;
+                        color:  #333F63;
+                        font-family: 'Manrope', sans-serif;
+                        font-weight: 400;
+                        font-size: 14px;
+                        border: none;">
                             {% for module in modules %}
                             <option value="{{ module.id }}">{{ module.name }}</option>
                             {% endfor %}

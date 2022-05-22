@@ -20,6 +20,19 @@
 
 	<div class="navbar">
 		<p class="logo"><a href="{% url 'login' %}">SQUARE</a></p>
+		{% if messages %}
+    		{% for message in messages %}
+    		<li style="color: white "{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            <style>
+                .navbar {
+                    background-color: red;
+                }
+                </style>
+            <li><a style="color: white " href="{% url 'login' %}" >Cancel</a></li>
+
+			{% endfor %}
+			
+			{% endif %}
 		<ul class="list">
 			<li><a href="{% url 'login' %}">Home</a></li>
 			<li><a href="#about">About</a></li>

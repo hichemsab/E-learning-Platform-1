@@ -30,3 +30,9 @@ def documents(request):
     }
 
     return render(request, "content/documents.html", context)
+
+def about(request):
+    return render(request, "content/about.html")
+
+def contact(request):
+    return render(request, "content/contact.html")

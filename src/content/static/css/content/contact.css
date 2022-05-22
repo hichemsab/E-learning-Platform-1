@@ -1,0 +1,50 @@
+
+body{
+	background-color: #D7D4DD;
+}
+
+.about {
+    padding: 30px ;
+    margin: auto;
+    width: 70%;
+    height: 50%;
+	box-shadow: 3px 3px 4px #9fa2ad;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+	position: absolute;
+	top: 20%;
+	left: 15%;
+	background-color: #FFF;
+}
+
+.three img {
+    max-width: 80%;
+}
+
+.about .one h1 {
+    color: #333F63;
+    font-family: 'Bodoni Moda', serif;
+    font-weight: 600;
+}
+
+.about .two ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about li {
+    color: #333F63;
+    padding: 5px;
+    list-style: circle;
+    font-family: 'Manrope', sans-serif;
+    font-size: 16px;
+}
+
+.about h2 {
+    color: #333F63;
+    font-family: 'Manrope', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+}

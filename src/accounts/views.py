@@ -204,7 +204,9 @@ def login_user(request):
                 print("User Is STUDENT")
                 return redirect('documents')
         else:
-            print("user is none")
+            messages.error(request, "Invalid Input")
+            return render(request, 'Square/index.html')
+            
     
     else:
 
@@ -278,7 +280,7 @@ def upload(request):
   }
 
 
-    if request.method=='POST' :
+    if request.method=='POST' and 'title' in request.POST :
         
         chosen_module = request.POST["modu"]
         title = request.POST["title"]
@@ -326,8 +328,9 @@ def upload(request):
         new_username = request.POST["new_username"]
         if old_username == current_user.username :
             User.objects.filter(id=current_user.id).update(username=new_username)
+            return redirect('upload')
         else:
-            messages.error(request, 'User name  not changed (check settings)')
+            messages.error(request, 'Invalid Changes (Try again)')
 
     
     if request.method=='POST' and 'old_email' in request.POST and 'new_email' in request.POST:
@@ -335,22 +338,28 @@ def upload(request):
         new_email = request.POST["new_email"]
         if old_email == current_user.email:
             User.objects.filter(id=current_user.id).update(email=new_email)
+            return redirect('upload')
         else:
-            messages.error(request, 'email not changed (check settings)')
+            messages.error(request, 'Invalid Changes (Try again)')
 
-    if request.method=='POST' and 'old_password' in request.POST and 'new_password' in request.POST:
-        old_password = request.POST["old_password"]
+    if request.method=='POST' and 'new_password' in request.POST and 'confirm_password' in request.POST:
         new_password = request.POST["new_password"]
+        confirm_password = request.POST["confirm_password"]
 
         print(current_user.password)
-        print(old_password)
+        print(confirm_password)
 
-        if check_password(old_password, current_user.password):
+        if new_password == confirm_password:
             usr = User.objects.get(username=current_user.username)
             usr.set_password(new_password)
             usr.save()
+
+            return redirect('logout')
+
+
         else:
-            messages.error(request, 'Password not changed (check settings)')
+            messages.error(request, 'Invalid Changes (Try again)')
+
 
 
 

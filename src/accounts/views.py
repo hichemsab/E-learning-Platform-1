@@ -20,10 +20,15 @@ from django.conf import settings
 from django.template.loader import render_to_string
 from django.db.models import F
 from content.views import documents
-
+from django.contrib.auth.decorators import login_required, permission_required
+from django.contrib.auth.models import Permission
 # Create your views here.
 
 User = get_user_model()
+
+@login_required
+@permission_required('accounts.add_professor', raise_exception=True)
+@permission_required('accounts.delete_professor', raise_exception=True)
 def admin_professor(request):
     print("===========================")
     print(request.POST)
@@ -103,6 +108,9 @@ def admin_professor(request):
     
     return render(request, "accounts/admin_professor.html", context)
 
+@login_required
+@permission_required('accounts.add_student', raise_exception=True)
+@permission_required('accounts.delete_student', raise_exception=True)
 def admin_student(request):
     print("===========================")
     print(request.POST)
@@ -199,6 +207,8 @@ def login_user(request):
             login(request, user)
             if user.is_professor == 1:
                 print("User Is PROFESSOR")
+                permission = Permission.objects.get(codename='add_cour')
+                user.user_permissions.add(permission)
                 return redirect('upload')
             elif user.is_student == 1:
                 print("User Is STUDENT")
@@ -232,6 +242,7 @@ def login_administrator(request):
 
     return render(request, 'accounts/login.html')
 
+@login_required
 def admin_choice(request):
     
     return render(request, 'accounts/admin_choice.html')
@@ -246,7 +257,8 @@ def logout_user(request):
 
 
 
-
+@login_required
+@permission_required('content.add_cour', raise_exception=True)
 def upload(request):
     current_user = request.user
     print(current_user.username)

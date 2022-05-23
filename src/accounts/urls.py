@@ -14,6 +14,6 @@ urlpatterns = [
     path('admin_choice/', admin_choice, name="admin_choice"),
     path('admin_professor/', admin_professor, name="admin_professor"),
     path('admin_student/', admin_student, name="admin_student"),
-]+ static(settings.MEDIA_URL, document_root= settings.MEDIA_ROOT)
+]
 
 

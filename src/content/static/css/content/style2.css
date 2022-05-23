@@ -14,7 +14,6 @@
 
 .bod{
 	background-color: #333F63;
-	border-radius: 5px;
 	text-align: center;
 	align-items: center;
 	display: flex;
@@ -43,7 +42,7 @@
 
 table{
 	width: 100%;
-	margin: 10px 0;
+	margin: 10px 0 50px;
 }
 
 th, tr, td{
@@ -68,3 +67,6 @@ table a{
 	color: silver;
 	border-bottom: 2px solid silver ;
 }
+
+
+

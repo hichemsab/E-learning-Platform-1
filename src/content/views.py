@@ -3,10 +3,11 @@ from re import I
 from django.shortcuts import render
 from accounts.models import Speciality, Student
 from content.models import *
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
-
+@login_required
 def documents(request):
 
     speciality = Speciality.objects.get(student=request.user.id)  
@@ -19,6 +20,8 @@ def documents(request):
     homeworks = homework.objects.filter(module_id__in=modules_id)
     corrections = correction.objects.filter(module_id__in=modules_id)
 
+    print(homeworks)
+    print(tds)
         
     context = {
         'modules' : modules,
@@ -31,8 +34,11 @@ def documents(request):
 
     return render(request, "content/documents.html", context)
 
+@login_required
 def about(request):
     return render(request, "content/about.html")
+
+@login_required
 
 def contact(request):
     return render(request, "content/contact.html")

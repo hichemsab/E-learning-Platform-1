@@ -5,13 +5,13 @@
 <head>
 
 	<meta charset="utf-8">
-	<title>Square</title>
+    <title>Student</title>
 	<meta name="viewport" content="width=device-width, iniciale-scale=1">
 	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
 	
     <link rel="stylesheet" href="{% static 'css/accounts/navfooter.css' %}">
-    <link rel="stylesheet" href="{% static 'css/accounts/style2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/content/style2.css' %}">
 
 
 
@@ -86,7 +86,7 @@
                         {% for homework in homeworks %}
                         {% if homework.module_id == module.id %}
                         <li>
-                            <a href="{{homework.homework.url}}" target="_blank">{{homework.title}}</a></li>
+                            <a href="{{homework.quizz.url}}" target="_blank">{{homework.title}}</a></li>
                         </li>
                         {% endif %}
                         {% endfor %}

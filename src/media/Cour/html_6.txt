@@ -1,0 +1,15 @@
+	<div class="contact">
+			<div class="words"><h1>Get in touch</h1><h6>Looking forward to <br> hear from you</h6>
+			</div>
+			<div class="listt">
+			<ul class="phone">Phone:
+				<li>+213-999-999-999</li>
+			</ul>
+			<ul class="email">Email:
+				<li>admin@univ-khenchela.dz</li>
+			</ul>
+			<ul class="smedia">Location:
+				<li>Khenchela - Rue 999</li>
+			</ul>
+		</div>
+	</div>

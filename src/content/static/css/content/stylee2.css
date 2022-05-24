@@ -6,10 +6,51 @@
 	
 }
 
+.containAll{
+	display: flex;
+	justify-content: space-between;
+    width: 90%;
+    margin: auto;
+}
+
+
+
+.announce{
+	width: 30%;
+	background-color: #D7D4DD;
+    margin-top: 30px;
+}
+
+.announce h1{
+    text-align: center;
+    padding: 20px 0px 10px;
+    border-bottom: 1px solid silver;
+    font-family: 'Bodoni Moda', serif;
+    font-size: 35px;
+    font-weight: 700;
+    color: #333F63;
+    margin-bottom: 10px;
+}
+
+.announce li{
+    font-family: 'Manrope', sans-serif;
+font-size: 20px;
+font-weight: 400;
+text-align: left;
+padding: 10px 0 20px;
+margin-left: 45px;
+color: #333F63;
+}
+
+.announce a{
+    color: #333F63;
+}
+
 .bodies{
 	margin: auto;
-	width: 95%;
 	padding: 30px 0;
+    width: 68%;
+
 }
 
 .bod{
@@ -64,7 +105,7 @@ table li{
 }
 
 table a{
-	color: silver;
+    color: #333F63;
 	border-bottom: 2px solid silver ;
 }
 

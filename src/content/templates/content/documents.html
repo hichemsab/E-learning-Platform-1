@@ -11,7 +11,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
 	
     <link rel="stylesheet" href="{% static 'css/accounts/navfooter.css' %}">
-    <link rel="stylesheet" href="{% static 'css/content/style2.css' %}">
+    <link rel="stylesheet" href="{% static 'css/content/stylee2.css' %}">
 
 
 
@@ -29,14 +29,29 @@
 		<p class="signup"><a href="{% url 'logout' %}">Log Out</a></p>
 	</div>
 
+
+    <div class="containAll">
+
+        <div class="announce">
+            <h1>
+                Announcements :
+            </h1>
+            <ol>
+                {% for announcement in announcements %}
+                <li> <a href="{{announcement.announcement.url}}" target="_blank">{{announcement.title}}</a></li>
+                {% endfor %}
+            </ol>
+        </div>
+
+
     <div class="bodies">
+        
         {% for module in modules %}
         <div class="bod">
     
             <h1>{{module.name}}</h1>
             <h4>Coefficient: {{module.coeffcient}}</h4>
             <h4>Credit: {{module.credit}}</h4>
-    
         </div>
         <table>
             <tr>
@@ -114,7 +129,8 @@
     
     </div>
 
-    
+    </div>
+</div>
 
 
 

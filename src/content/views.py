@@ -24,6 +24,7 @@ def documents(request):
     tps = Tp.objects.filter(module_id__in=modules_id)
     homeworks = homework.objects.filter(module_id__in=modules_id)
     corrections = correction.objects.filter(module_id__in=modules_id)
+    announcements = announcement.objects.filter(speciality_id=speciality.id)
 
 
     context = {
@@ -33,6 +34,7 @@ def documents(request):
         'tps' : tps,
         'homeworks' : homeworks,
         'corrections' : corrections,
+        'announcements' : announcements,
     }
 
     return render(request, "content/documents.html", context)

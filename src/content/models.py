@@ -4,6 +4,7 @@ from django.db import models
 
 
 
+
 # Create your models here.
 
 class Module(models.Model):
@@ -59,8 +60,8 @@ class correction(models.Model):
 
 class announcement(models.Model):
     title = models.CharField(max_length=100, null=True, blank=True)
-    announcement = models.FileField(upload_to='correction')
-    spe = models.ForeignKey(Module, null=True, on_delete= models.SET_NULL)
+    announcement = models.FileField(upload_to='announcement')
+    speciality = models.ForeignKey("accounts.Speciality", null=True, on_delete= models.SET_NULL)
 
     def __str__(self):
         return self.title

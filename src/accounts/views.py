@@ -52,41 +52,50 @@ def admin_professor(request):
         username = request.POST.get("username")
         password = request.POST.get("password")
         gender = request.POST.get("gender")
-        user = User.objects.create_user(last_name=last_name,
-                                        first_name=first_name,
-                                        email=email,
-                                        username=username, 
-                                        password=password,
-                                        is_professor=True,
-                                        gender=gender)
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Username already exists .")
+        elif User.objects.filter(email=email).exists():
+            messages.error(request, "Email already exists .")
 
-        print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
-        modules = request.POST.getlist("modules")
-        print(modules)
-        print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+        else:
+            user = User.objects.create_user(last_name=last_name,
+                                            first_name=first_name,
+                                            email=email,
+                                            username=username, 
+                                            password=password,
+                                            is_professor=True,
+                                            gender=gender)
 
-        if user:
+            print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
+            modules = request.POST.getlist("modules")
+            print(modules)
+            print("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx")
 
-            prof = Professor.objects.create(user_id=user.id) 
+            if user:
 
-            for module in modules:
-                prof.modules.add(module)
-            
-            
+                prof = Professor.objects.create(user_id=user.id) 
 
-            messages.success(request, "Professor added succesfully .")
+                for module in modules:
+                    prof.modules.add(module)
+                
+                
 
-
-            full_name = user.first_name + " " + user.last_name
-            prof_username = user.username
-            subject = 'SQUARE Application - NO REPLY MESSAGE -'
-            message = render_to_string('accounts/email_template.html', {'full_name':full_name, 'prof_username':prof_username})
-            prof_mail = user.email
+                messages.success(request, "Professor added succesfully .")
 
 
-            send_mail(subject, message, '' ,[prof_mail], fail_silently=False)
+                full_name = user.first_name + " " + user.last_name
+                prof_username = user.username
+                subject = 'SQUARE Application - NO REPLY MESSAGE -'
+                message = render_to_string('accounts/email_template.html', {'full_name':full_name, 'prof_username':prof_username})
+                prof_mail = user.email
 
-            print("FINISHH")
+
+                send_mail(subject, message, '' ,[prof_mail], fail_silently=False)
+
+            else:
+                messages.error(request, "User not been created")
+
+       
     
     
     elif request.method == "POST"  :
@@ -135,24 +144,31 @@ def admin_student(request):
         username = request.POST.get("username")
         password = request.POST.get("password")
         gender = request.POST.get("gender")
-        user = User.objects.create_user(last_name=last_name,
-                                        first_name=first_name,
-                                        email=email,
-                                        username=username, 
-                                        password=password,
-                                        is_student=True,
-                                        gender=gender)
-        if user:
+        if User.objects.filter(username=username).exists():
+            messages.error(request, "Username already exists .")
+        elif User.objects.filter(email=email).exists():
+            messages.error(request, "Email already exists .")
+        else:
+            user = User.objects.create_user(last_name=last_name,
+                                            first_name=first_name,
+                                            email=email,
+                                            username=username, 
+                                            password=password,
+                                            is_student=True,
+                                            gender=gender)
+            if user:
 
-            chosen_speciality = request.POST.get("Speciality")
+                chosen_speciality = request.POST.get("Speciality")
 
-            print("chosen_speciality :" )
-            print(chosen_speciality)
-    
-            
-            student = Student.objects.create(user_id=user.id, speciality_id=chosen_speciality)
-            
+                print("chosen_speciality :" )
+                print(chosen_speciality)
+        
                 
+                student = Student.objects.create(user_id=user.id, speciality_id=chosen_speciality)
+                
+            else :
+                messages.error(request, "User not been created")
+
 
             
 

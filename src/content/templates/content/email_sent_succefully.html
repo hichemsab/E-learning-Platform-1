@@ -5,35 +5,26 @@
 <head>
 
 	<meta charset="utf-8">
-	<title>Square</title>
+    <title>Student</title>
 	<meta name="viewport" content="width=device-width, iniciale-scale=1">
 	<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="{% static 'css/accounts/password_reset.css' %}">
+	
+    <link rel="stylesheet" href="{% static 'css/content/done.css' %}">
+
 
 
 </head>
+
 <body>
-			
-			
-		
-		<div class="resetPw">
-			<h1>Enter new password</h1>
-
-<p>Please enter your new password twice so we can verify you typed it in correctly.</p>
-
-<form method="post">
-	<div class="sbmt">
-
-	{% csrf_token %}
-	{{form}}
-	<input type="Submit" name="Update Password">
-	
-</form>
+	<div class="nothing"></div>
+	<div class="succ">
+		<img src="{% static 'css/content/image/succes.png' %}" alt="">
+		<h1>DONE</h1>
+		<p>E-mail sent successfully<br>Nothing went Wrong</p>
+        <a href="{% url 'login'%}" style="padding-left:46%; ">Exit</a>
+	</div>
+</body>
 
 
-</div>
-</div>
-
-</body>	
 </html>

@@ -1,0 +1,52 @@
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+
+.nothing{
+
+	margin-bottom: 15%;
+}
+
+.succ{
+	background-color: #FFF;
+	width: 40%;
+	margin: auto;
+	box-shadow: 0 -3px 10px #c5c5c5;
+
+}
+img{
+	width: 10%;
+	top: 20%;
+	position: absolute;
+	left: 45%;
+
+}
+
+.succ h1{
+	text-align: center;
+padding: 70px 0px 10px;
+border-bottom: 1px solid silver;
+font-family: 'Bodoni Moda', serif;
+font-size: 40px;
+font-weight: 900;
+color: #333F63;
+margin-bottom: 10px;
+}
+
+.succ p, .succ a{
+	font-family: 'Manrope', sans-serif;
+font-size: 20px;
+font-weight: 400;
+text-align: center;
+padding-bottom: 20px;
+color: #333F63;
+}
+
+.succ a:hover{
+color: #838BC2;
+
+
+}

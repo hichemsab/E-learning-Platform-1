@@ -95,9 +95,17 @@
 					{% csrf_token %}
 				<div class="textfield"><input id="username" type="text" name="username" required><span></span><label for="username">User name</label></div>
 				<div class="textfield"><input id="password" type="password" name="password" required><span></span><label for="password">Password</label></div>
-				<div class="secnct"><input type="submit" value="Login"></div>
+				<div class="secnct" style="margin-bottom: 20px;" ><input type="submit" value="Login"></div>
 			</form>
-			<a href="{% url 'reset_password' %}">forgot password ?</a>
+			<a href="{% url 'reset_password' %}" style="
+			text-align: center;
+			font-family: 'Manrope', sans-serif;
+			font-size: 15px;
+			font-weight: 500;
+			color: #333F63;
+			border-bottom: 1px solid #333F63;
+			
+			">forgot password ?</a>
 	</div>
 </div>
 

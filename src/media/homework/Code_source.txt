@@ -1,0 +1,113 @@
+animal = { 
+        'cheuveux' : True,
+        'lait' : False,
+        'viande' : False,
+        'dents_pointu' : False,
+        'griffes' : False,
+        'yeux_en_avant' : False,
+        'carnivore' : False,
+        'mammifere' : False,
+        'sabots' : False,
+        'ongule' : False,
+        'machonnement' : True,
+        'fauve' : False,
+        'taches_noirs' : True,
+        'bandes_noires' : False,
+        'long_cou' : True,
+        #----------------------
+        'tiger' : False,
+        'giraffe' : False,
+        'zebra' : False,
+        'guepard' : False
+        }
+
+new_fact = True
+
+rules_fired = []
+
+while new_fact == True:
+    new_fact = False
+    
+    # Rule 1
+    if animal['cheuveux'] is True and animal['mammifere'] is False:
+        animal['mammifere'] = True
+        new_fact = True
+        rules_fired.append('R1')
+    
+    # Rule 2
+    if animal['lait'] is True and animal['mammifere'] is False:
+        animal['mammifere'] = True
+        new_fact = True
+        rules_fired.append('R2')
+        
+    # Rule 3
+    if animal['viande'] is True and animal['carnivore'] is False:
+        animal['carnivore'] = True
+        new_fact = True
+        rules_fired.append('R3')
+        
+    # Rule 4
+    if animal['dents_pointu'] is True and animal['griffes'] is True and animal['yeux_en_avant'] is True and animal['carnivore'] is False:
+        animal['carnivore'] = True
+        new_fact = True
+        rules_fired.append('R4')
+        
+    # Rule 5
+    if animal['mammifere'] is True and animal['sabots'] is True and animal['ongule'] is False:
+        animal['ongule'] = True
+        new_fact = True
+        rules_fired.append('R5')
+        
+    # Rule 6
+    if animal['mammifere'] is True and animal['machonnement'] is True and animal['ongule'] is False:
+        animal['ongule'] = True
+        new_fact = True
+        rules_fired.append('R6')
+    
+    # Rule 7
+    if animal['mammifere'] is True and animal['carnivore'] is True and animal['fauve'] is True and animal['taches_noirs'] is True and animal['guepard'] is False:
+        animal['guepard'] = True
+        new_fact = True
+        rules_fired.append('R7')
+    
+    # Rule 8
+    if animal['fauve'] is True and animal['bandes_noires'] is True and animal['mammifere'] is True and animal['carnivore'] is True and animal['tiger'] is False:
+        animal['tiger'] = True
+        new_fact = True
+        rules_fired.append('R8')
+    
+    # Rule 9
+    if animal['taches_noirs'] is True and animal['long_cou'] is True and animal['ongule'] is True and animal['giraffe'] is False:
+        animal['giraffe'] = True
+        new_fact = True
+        rules_fired.append('R9')
+        
+    # Rule 10
+    if animal['bandes_noires'] is True and animal['ongule'] is True and animal['zebra'] is False:
+        animal['zebra'] = True
+        new_fact = True
+        rules_fired.append('R10')
+        
+    if animal['zebra'] is True:
+        print('Your animal is a zebra!\n')
+        print('Rules fired: ')
+        print(rules_fired)
+        new_fact = False
+        
+    elif animal['tiger'] is True:
+        print('Your animal is a tiger!\n')    
+        print('Rules fired: ')
+        print(rules_fired)
+        new_fact = False
+    
+    elif animal['giraffe'] is True:
+        print('Your animal is a giraffe!\n')    
+        print('Rules fired: ')
+        print(rules_fired)
+        new_fact = False
+    
+    elif animal['guepard'] is True:
+        print('Your animal is a guepard!\n')    
+        print('Rules fired: ')
+        print(rules_fired)
+        new_fact = False

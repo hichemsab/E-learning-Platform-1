@@ -45,7 +45,18 @@
 			{% endfor %}
 			{% endif %}
 			</ul>
-			<div class="secnct"><input type="submit" value="Login"></div>
+			<div class="secnct"><input type="submit" value="Login" style="margin-bottom: 30px;"></div>
+			<a href="{% url 'reset_password' %}" style="
+			position: absolute;
+			left: 38%;
+			top: 90%;
+			font-family: 'Manrope', sans-serif;
+			font-size: 15px;
+			font-weight: 500;
+			color: #333F63;
+			border-bottom: 1px solid #333F63;
+			
+			">forgot password ?</a>
 		</form>
 	</div>
 	</div>

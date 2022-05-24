@@ -56,3 +56,11 @@ class correction(models.Model):
 
     def __str__(self):
         return self.title
+
+class announcement(models.Model):
+    title = models.CharField(max_length=100, null=True, blank=True)
+    announcement = models.FileField(upload_to='correction')
+    spe = models.ForeignKey(Module, null=True, on_delete= models.SET_NULL)
+
+    def __str__(self):
+        return self.title

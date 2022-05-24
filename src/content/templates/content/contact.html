@@ -8,29 +8,32 @@
         <meta name="viewport" content="width=device-width, iniciale-scale=1">
         <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">    
-    	<link rel="stylesheet" href="{% static 'css/content/about.css' %}">
+    	<link rel="stylesheet" href="{% static 'css/content/cont.css' %}">
+
+    
     </head>
 
-   <body>
-    <div class="contactw">
-        <div class="words"><h1>Get in touch</h1><h6>Looking forward to <br> hear from you</h6>
-        </div>
-        <div class="listt">
-        <ul class="phone">Phone:
-            <li>+213-999-999-999</li>
-        </ul>
-        <ul class="email">Email:
-            <li>admin@univ-khenchela.dz</li>
-        </ul>
-        <ul class="smedia">Location:
-            <li>Khenchela - Rue 999</li>
-        </ul>
-    </div>
-</div>
-
-
-   </body>
-
+    <body>
+        <form method="post"> 
+			{% csrf_token %}
+            <h1>Contact the Administration:</h1>
+            <p>Don't forgot to mention your name, Email and the person you're willing to contact</p>
+            <label for="fname">E-mail : </label><br>
+            <input type="text" name="email_sender" required><br>
+            <label for="lname">Name : </label><br>
+            <input type="text" name="name_sender" required><br>
+            <label for="lname">Message : </label><br>
+            <textarea name="message" id="" cols="30" rows="10" required style=" font-size: 14px; "> your messege: ...</textarea><br>
+            <input type="submit" value="Submit">
+          </form>
+            {% if messages %}
+                {% for message in messages %}
+                <ul>
+                <li style="color: red; list-style: none; "{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                </ul>
+                {% endfor %}
+            {% endif %}
+    </body>
 
 
 

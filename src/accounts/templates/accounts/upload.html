@@ -11,6 +11,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;500;600;700;800;900&family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Sans+Pro:wght@700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="{% static 'css/accounts/h.css' %}">
 	<link rel="stylesheet" href="{% static 'css/accounts/navfooter.css' %}">
+    <link rel="stylesheet" href="{% static 'css/content/style2.css' %}">
+
 
 
 </head>
@@ -43,10 +45,18 @@
 		</ul>
 		<p class="signup"><a href="{% url 'logout' %}">Log Out</a></p>
 	</div>
+
+	<div class="btnn"><a href="#" onclick="document.getElementById('id2').style.display = 'flex'"style="font-size: 20px;
+		font-weight: 400;  position:absolute; left:81px; top:100px; background-color: #333F63; color:#D7D4DD; padding: 10px 20px; border: none;">Add a Document &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp + </a></div>
+
+<div class="bg-model" id="id2">
+		
 		<form class="form" method="POST" enctype="multipart/form-data" name="choisir">
 			{% csrf_token %}
 
-			<div class="s-model">
+			<div class="s-model" style="width: 150%;
+			left:-30%;">
+	<div class="close"><a href="#" onclick="document.getElementById('id2').style.display = 'none'">+</a></div>
 				
 				<h1 class="Upcourse">Upload:</h1>
 
@@ -80,7 +90,11 @@
 		
 	 
 		</form>
-		<div class="bodies">
+
+</div>
+
+
+		<div class="bodies" style="width: 88%;">
 			<form class="form" method="POST" enctype="multipart/form-data" name="choisir">
 				{% csrf_token %}
 			{% for module in modules %}
@@ -106,8 +120,9 @@
 							{% for cour in cours %}
 							{% if cour.module_id == module.id %}
 							<li>
-								<a href="{{cour.cour.url}}" target="_blank">{{cour.title}}</a></li>
 								<input type="checkbox" name="cour_checked" value="{{cour.id}}">
+								<a href="{{cour.cour.url}}" target="_blank">{{cour.title}}</a>
+								
 							</li>
 							{% endif %}
 							{% endfor %}
@@ -118,8 +133,9 @@
 							{% for td in tds %}
 							{% if td.module_id == module.id %}
 							<li>
-								<a href="{{td.td.url}}" target="_blank">{{td.title}}</a></li>
 								<input type="checkbox" name="td_checked" value="{{td.id}}">
+
+								<a href="{{td.td.url}}" target="_blank">{{td.title}}</a>
 							</li>
 							{% endif %}
 							{% endfor %}
@@ -130,8 +146,9 @@
 							{% for tp in tps %}
 							{% if tp.module_id == module.id %}
 							<li>
-								<a href="{{tp.tp.url}}" target="_blank">{{tp.title}}</a></li>
 								<input type="checkbox" name="tp_checked" value="{{tp.id}}">
+
+								<a href="{{tp.tp.url}}" target="_blank">{{tp.title}}</a>
 							</li>
 							{% endif %}
 							{% endfor %}
@@ -142,8 +159,9 @@
 							{% for homework in homeworks %}
 							{% if homework.module_id == module.id %}
 							<li>
-								<a href="{{homework.quizz.url}}" target="_blank">{{homework.title}}</a></li>
 								<input type="checkbox" name="homework_checked" value="{{homework.id}}">
+
+								<a href="{{homework.quizz.url}}" target="_blank">{{homework.title}}</a>
 							</li>
 							{% endif %}
 							{% endfor %}
@@ -154,8 +172,9 @@
 							{% for correction in corrections %}
 							{% if correction.module_id == module.id %}
 							<li>
-								<a href="{{correction.correction.url}}" target="_blank">{{correction.title}}</a></li>
 								<input type="checkbox" name="correction_checked" value="{{correction.id}}">
+
+								<a href="{{correction.correction.url}}" target="_blank">{{correction.title}}</a>
 							</li>
 							{% endif %}
 							{% endfor %}
@@ -168,7 +187,8 @@
 		
 			</table>
 			{% endfor %}
-			<button type="submit">Delete</button>
+			<button type="submit" style="font-size: 16px;
+			font-weight: 400;  background-color: #333F63; color:#D7D4DD; padding: 10px 20px; border: none; cursor: pointer;">Delete&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</button>
 			</form>
 			
 		

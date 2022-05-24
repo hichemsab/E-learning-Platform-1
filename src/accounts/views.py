@@ -371,7 +371,10 @@ def upload(request):
         old_username = request.POST["old_username"]
         new_username = request.POST["new_username"]
         if old_username == current_user.username :
-            User.objects.filter(id=current_user.id).update(username=new_username)
+            if User.objects.filter(username=new_username).exists():
+                messages.error(request, "Username already exists .")
+            else:
+                User.objects.filter(id=current_user.id).update(username=new_username)
             return redirect('upload')
         else:
             messages.error(request, 'Invalid Changes (Try again)')

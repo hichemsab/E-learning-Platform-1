@@ -52,14 +52,10 @@
 
 					<div class="textfield" ><input id="title" type="title" name="title" required><span></span><label for="title">File Title:</label></div>
 					<div class="rBtn">
-						<input class="course" type="radio" name="modu" value="{{ mod1 }}" onclick="document.getElementById('id2').style.display = 'flex'">{{ mod1 }}<br>	
-						<input class="course" type="radio" name="modu" value="{{ mod2 }}" onclick="document.getElementById('id2').style.display = 'flex'">{{ mod2 }}<br>	
-						{% if mod3 %}
-						<input class="course" type="radio" name="modu" value="{{ mod3 }}" onclick="document.getElementById('id2').style.display = 'flex'">{{ mod3 }}<br>	
-						{% endif %}
-						{% if mod4 %} 
-						<input class="course" type="radio" name="modu" value="{{ mod4 }}" onclick="document.getElementById('id2').style.display = 'flex'">{{ mod4 }}<br>			
-						{% endif %}
+						{% for module in modules %}
+						<input class="course" type="radio" name="modu" value="{{ module }}" onclick="document.getElementById('id2').style.display = 'flex'">{{ module }}<br>
+						{% endfor %}	
+						
 
 					</div>
 	
@@ -84,6 +80,99 @@
 		
 	 
 		</form>
+		<div class="bodies">
+			<form class="form" method="POST" enctype="multipart/form-data" name="choisir">
+				{% csrf_token %}
+			{% for module in modules %}
+			<div class="bod">
+		
+				<h1>{{module.name}}</h1>
+				<h4>Coefficient: {{module.coeffcient}}</h4>
+				<h4>Credit: {{module.credit}}</h4>
+		
+			</div>
+			<table>
+				<tr>
+					<th>Cours:</th>
+					<th>Td:</th>
+					<th>Tp:</th>
+					<th>Home-Work:</th>
+					<th>Correction:</th>
+		
+				</tr>
+				<tr>
+					<td>
+						<ul>
+							{% for cour in cours %}
+							{% if cour.module_id == module.id %}
+							<li>
+								<a href="{{cour.cour.url}}" target="_blank">{{cour.title}}</a></li>
+								<input type="checkbox" name="cour_checked" value="{{cour.id}}">
+							</li>
+							{% endif %}
+							{% endfor %}
+						</ul>
+					</td>
+					<td>
+						<ul>
+							{% for td in tds %}
+							{% if td.module_id == module.id %}
+							<li>
+								<a href="{{td.td.url}}" target="_blank">{{td.title}}</a></li>
+								<input type="checkbox" name="td_checked" value="{{td.id}}">
+							</li>
+							{% endif %}
+							{% endfor %}
+						</ul>
+					</td>
+					<td>
+						<ul>
+							{% for tp in tps %}
+							{% if tp.module_id == module.id %}
+							<li>
+								<a href="{{tp.tp.url}}" target="_blank">{{tp.title}}</a></li>
+								<input type="checkbox" name="tp_checked" value="{{tp.id}}">
+							</li>
+							{% endif %}
+							{% endfor %}
+						</ul>
+					</td>
+					<td>
+						<ul>
+							{% for homework in homeworks %}
+							{% if homework.module_id == module.id %}
+							<li>
+								<a href="{{homework.quizz.url}}" target="_blank">{{homework.title}}</a></li>
+								<input type="checkbox" name="homework_checked" value="{{homework.id}}">
+							</li>
+							{% endif %}
+							{% endfor %}
+						</ul>
+					</td>
+					<td>
+						<ul>
+							{% for correction in corrections %}
+							{% if correction.module_id == module.id %}
+							<li>
+								<a href="{{correction.correction.url}}" target="_blank">{{correction.title}}</a></li>
+								<input type="checkbox" name="correction_checked" value="{{correction.id}}">
+							</li>
+							{% endif %}
+							{% endfor %}
+						</ul>
+					</td>
+				   
+		
+		
+				</tr>
+		
+			</table>
+			{% endfor %}
+			<button type="submit">Delete</button>
+			</form>
+			
+		
+		</div>
 	
 </body>
 
@@ -212,6 +301,7 @@ var divs = ["Section1", "Section2", "Section3", "Section4"];
 	
 	
  </script>
+
 
 
 </html>

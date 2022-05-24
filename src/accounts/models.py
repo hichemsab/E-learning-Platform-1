@@ -10,22 +10,8 @@ from django.core.exceptions import ValidationError
 # Create your models here.
 
 class Speciality(models.Model):
-    SPECIALITY = (
-        ('MI - L1', 'MI - L1'),
-        ('INFO - L2', 'INFO - L2'),
-        ('MATH - L2', 'MATH - L2'),
-        ('SI - L3', 'SI - L3'),
-        ('ISIL - L3', 'ISIL - L3'),
-        ('MATH - L3', 'MATH - L3'),
-        ('STW - M1', 'STW - M1'),
-        ('GLSD - M1', 'GLSD - M1'),
-        ('MATHAPPLQ - M1', 'MATHAPPLQ - M1'),
-        ('STW - M2', 'STW - M2'),
-        ('GLSD - M2', 'GLSD - M2'),
-        ('MATHAPPLQ - M2', 'MATHAPPLQ - M2'),
-    )
-        
-    speciality = models.CharField(max_length=20, choices=SPECIALITY, default='MI', null=False, blank=False, unique=True)
+
+    speciality = models.CharField(max_length=20, default='MI', null=False, blank=False, unique=True)
 
     
     def __str__(self):

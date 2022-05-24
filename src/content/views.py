@@ -20,9 +20,7 @@ def documents(request):
     homeworks = homework.objects.filter(module_id__in=modules_id)
     corrections = correction.objects.filter(module_id__in=modules_id)
 
-    print(homeworks)
-    print(tds)
-        
+
     context = {
         'modules' : modules,
         'cours' : cours,
@@ -34,11 +32,10 @@ def documents(request):
 
     return render(request, "content/documents.html", context)
 
-@login_required
+
 def about(request):
     return render(request, "content/about.html")
 
-@login_required
 
 def contact(request):
     return render(request, "content/contact.html")

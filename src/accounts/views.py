@@ -28,7 +28,6 @@ User = get_user_model()
 
 @login_required
 @permission_required('accounts.add_professor', raise_exception=True)
-@permission_required('accounts.delete_professor', raise_exception=True)
 def admin_professor(request):
     print("===========================")
     print(request.POST)
@@ -165,13 +164,13 @@ def admin_student(request):
             messages.success(request, "Student added succesfully .")
 
             full_name = user.first_name + " " + user.last_name
-            prof_username = user.username
+            student_username = user.username
             subject = 'SQUARE Application - NO REPLY MESSAGE -'
-            message = render_to_string('accounts/email_template.html', {'full_name':full_name, 'prof_username':prof_username})
-            prof_mail = user.email
+            message = render_to_string('accounts/email_template.html', {'full_name':full_name, 'prof_username':student_username})
+            student_mail = user.email
 
 
-            send_mail(subject, message, '' ,[prof_mail], fail_silently=False)
+            send_mail(subject, message, '' ,[student_mail], fail_silently=False)
 
 
     elif request.method == "POST"  :
@@ -264,32 +263,49 @@ def upload(request):
     print(current_user.username)
     print(current_user.email)
     print(current_user.password)
-    print(request.POST)
+    
 
-    if len(Module.objects.filter(professor=current_user.id))==2:
-        mod1, mod2 = Module.objects.filter(professor=current_user.id)
+    
+    modules = Module.objects.filter(professor=current_user.id)
+    
 
-        context = {
-    'mod1': mod1,
-    'mod2': mod2,
-  }
 
-    elif len(Module.objects.filter(professor=current_user.id))==3:
-        mod1, mod2, mod3 = Module.objects.filter(professor=current_user.id)
+    cours = Cour.objects.filter(module_id__in=modules)
+    tds = Td.objects.filter(module_id__in=modules)
+    tps = Tp.objects.filter(module_id__in=modules)
+    homeworks = homework.objects.filter(module_id__in=modules)
+    corrections = correction.objects.filter(module_id__in=modules)
 
-        context = {
-    'mod1': mod1,
-    'mod2': mod2,
-    'mod3': mod3,
-  }
-    elif len(Module.objects.filter(professor=current_user.id))==4:
-        mod1, mod2, mod3, mod4 = Module.objects.filter(professor=current_user.id)
-        context = {
-    'mod1': mod1,
-    'mod2': mod2,
-    'mod3': mod3,
-    'mod4': mod4,
-  }
+    if request.method=='POST' and 'cour_checked' in request.POST:
+        cour_checked = request.POST.getlist("cour_checked")
+        Cour.objects.filter(id__in=cour_checked).delete()
+    
+    if request.method=='POST' and 'td_checked' in request.POST:
+        td_checked = request.POST.getlist("td_checked")
+        Td.objects.filter(id__in=td_checked).delete()
+    
+    if request.method=='POST' and 'tp_checked' in request.POST:
+        tp_checked = request.POST.getlist("tp_checked")
+        Tp.objects.filter(id__in=tp_checked).delete()
+
+    if request.method=='POST' and 'homework_checked' in request.POST:
+        homework_checked = request.POST.getlist("homework_checked")
+        homework.objects.filter(id__in=homework_checked).delete()
+
+    if request.method=='POST' and 'correction_checked' in request.POST:
+        correction_checked = request.POST.getlist("correction_checked")
+        correction.objects.filter(id__in=correction_checked).delete()
+        
+
+
+    context = {
+        'modules' : modules,
+        'cours' : cours,
+        'tds' : tds,
+        'tps' : tps,
+        'homeworks' : homeworks,
+        'corrections' : corrections,
+    }
 
 
     if request.method=='POST' and 'title' in request.POST :

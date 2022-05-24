@@ -22,13 +22,7 @@
 		<p class="logo"><a href="{% url 'login' %}">SQUARE</a></p>
 		{% if messages %}
     		{% for message in messages %}
-    		<li style="color: white "{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            <style>
-                .navbar {
-                    background-color: red;
-                }
-                </style>
-            <li><a style="color: white " href="{% url 'login' %}" >Cancel</a></li>
+    		<li style="color: red "{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }} &nbsp &nbsp &nbsp<a style="color: red ; border-left: 1px solid red; padding-left: 20px;" href="{% url 'login' %}" >Cancel </a></li>
 
 			{% endfor %}
 			
@@ -103,6 +97,7 @@
 				<div class="textfield"><input id="password" type="password" name="password" required><span></span><label for="password">Password</label></div>
 				<div class="secnct"><input type="submit" value="Login"></div>
 			</form>
+			<a href="{% url 'reset_password' %}">forgot password ?</a>
 	</div>
 </div>
 
